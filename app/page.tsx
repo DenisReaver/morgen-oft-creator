@@ -619,6 +619,7 @@ export default function MorgenOFTApp() {
   };
 
   // ==================== SEND (BRIDGE) ====================
+// ==================== SEND (BRIDGE) ====================
   const sendToken = async () => {
     if (!address) return alert("Connect your wallet");
     if (!recipient) return alert("Please enter the recipient's address");
@@ -649,7 +650,7 @@ export default function MorgenOFTApp() {
         dstEid,
         to: `0x000000000000000000000000${recipient.slice(2)}` as `0x${string}`,
         amountLD,
-        minAmountLD: (amountLD * 950n) / 1000n,
+        minAmountLD: (amountLD * BigInt(950)) / BigInt(1000),   // ← ИСПРАВЛЕНО
         extraOptions: "0x",
         composeMsg: "0x",
         oftCmd: "0x",

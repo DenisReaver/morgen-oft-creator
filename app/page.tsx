@@ -620,7 +620,7 @@ export default function MorgenOFTApp() {
 
   // ==================== SEND (BRIDGE) ====================
 // ==================== SEND (BRIDGE) ====================
-  const sendToken = async () => {
+const sendToken = async () => {
     if (!address) return alert("Connect your wallet");
     if (!recipient) return alert("Please enter the recipient's address");
     if (!publicClient) return alert("Public client is not available");
@@ -650,10 +650,10 @@ export default function MorgenOFTApp() {
         dstEid,
         to: `0x000000000000000000000000${recipient.slice(2)}` as `0x${string}`,
         amountLD,
-        minAmountLD: (amountLD * BigInt(950)) / BigInt(1000),   // ← ИСПРАВЛЕНО
-        extraOptions: "0x",
-        composeMsg: "0x",
-        oftCmd: "0x",
+        minAmountLD: (amountLD * BigInt(950)) / BigInt(1000),
+        extraOptions: "0x" as `0x${string}`,      // ← исправлено
+        composeMsg: "0x" as `0x${string}`,        // ← исправлено
+        oftCmd: "0x" as `0x${string}`,            // ← исправлено
       };
 
       const quoteResult = await publicClient.readContract({
